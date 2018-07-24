@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
 class ClienteController extends Controller
 {
@@ -26,7 +25,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view("cliente.create");
+        return view("cliente.form");
     }
         
     /**
@@ -63,7 +62,7 @@ class ClienteController extends Controller
         $cliente->cor_favorita = $request->cor_favorita;
         $cliente->habilidades = $request->habilidades;
         $cliente->save();
-        Session::flash("flash_msg_success", "Armazenamento realizado com sucesso.");
+        \Session::flash("flash_msg_success", "Armazenamento realizado com sucesso.");
         return redirect("/cliente");
     }
         
@@ -125,7 +124,7 @@ class ClienteController extends Controller
         $cliente->habilidades = $request->habilidades;
         $cliente->save();
 
-        Session::flash("flash_msg_success", "Edição realizada com sucesso.");
+        \Session::flash("flash_msg_success", "Edição realizada com sucesso.");
         return redirect("/cliente");
     }
         
@@ -138,7 +137,7 @@ class ClienteController extends Controller
     public function destroy(Cliente $cliente)
     {
         $cliente->delete();
-        Session::flash("flash_msg_success", "Exclusão realizada com sucesso.");
+        \Session::flash("flash_msg_success", "Exclusão realizada com sucesso.");
         return redirect("/cliente");
     }
 }
