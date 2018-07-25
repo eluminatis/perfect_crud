@@ -16,6 +16,8 @@
                     <th style="width: 30px;">Id</th>
                     <th>Nome</th>
                     <th>Telefone</th>
+                    <th>Email</th>
+                    <th>gênero</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +31,12 @@
                     </td>
                     <td>
                         <a href="{{ url('/cliente/'.$cliente->id.'/edit') }}">{{ $cliente->telefone }}</a>
+                    </td>
+                    <td>
+                        <a href="{{ url('/cliente/'.$cliente->id.'/edit') }}">{{ $cliente->email }}</a>
+                    </td>
+                    <td>
+                        <a href="{{ url('/cliente/'.$cliente->id.'/edit') }}">{{ $cliente->genero }}</a>
                     </td>
                 </tr>
                 @endforeach
