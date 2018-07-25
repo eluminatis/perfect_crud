@@ -67,18 +67,6 @@ class ClienteController extends Controller
     }
         
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Cliente $cliente
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Cliente $cliente)
-    {
-        $data["cliente"] = $cliente;
-        return view("cliente.show", $data);
-    }
-        
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Cliente $cliente

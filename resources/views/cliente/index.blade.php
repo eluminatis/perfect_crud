@@ -13,23 +13,23 @@
         <table id="mytable" class="display" cellspacing="0" width="100%">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th style="width: 30px;">Id</th>
                     <th>Nome</th>
                     <th>Telefone</th>
-                    <th style="width:125px">Visualizar</th>
-                    <th style="width:125px">Editar</th>
-                    <th style="width:125px">Apagar</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($clientes as $cliente)
                 <tr>
-                    <td>{{ $cliente->id }}</td>
-                    <td>{{ $cliente->nome }}</td>
-                    <td>{{ $cliente->telefone }}</td>
-                    <td><a href="{{ url('/cliente/'.$cliente->id.'/show') }}" class="btn btn-lg btn-block btn-success">Visualizar</a></td>
-                    <td><a href="{{ url('/cliente/'.$cliente->id.'/edit') }}" class="btn btn-lg btn-block btn-primary">Editar</a></td>
-                    <td><a href="{{ url('/cliente/'.$cliente->id.'/destroy') }}" class="btn btn-lg btn-block btn-danger">Apagar</a></td>
+                    <td>
+                        <a href="{{ url('/cliente/'.$cliente->id.'/edit') }}">{{ $cliente->id }}</a>
+                    </td>
+                    <td>
+                        <a href="{{ url('/cliente/'.$cliente->id.'/edit') }}">{{ $cliente->nome }}</a>
+                    </td>
+                    <td>
+                        <a href="{{ url('/cliente/'.$cliente->id.'/edit') }}">{{ $cliente->telefone }}</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
