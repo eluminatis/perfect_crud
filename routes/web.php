@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,9 +21,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/cliente', 'ClienteController@index');
-Route::get('/cliente/create', 'ClienteController@create');
-Route::post('/cliente/store', 'ClienteController@store');
-Route::get('/cliente/{cliente}/edit', 'ClienteController@edit');
-Route::post('/cliente/{cliente}/update', 'ClienteController@update');
-Route::get('/cliente/{cliente}/destroy', 'ClienteController@destroy');
+// Route::get('/cliente', 'ClienteController@index');
+// Route::get('/cliente/create', 'ClienteController@create');
+// Route::post('/cliente/store', 'ClienteController@store');
+// Route::get('/cliente/{cliente}/edit', 'ClienteController@edit');
+// Route::post('/cliente/{cliente}/update', 'ClienteController@update');
+// Route::get('/cliente/{cliente}/destroy', 'ClienteController@destroy');
+
+$this->resource('/cliente', 'ClienteController');

@@ -7,7 +7,9 @@
 @section('content')
 @include('messages.msgs')
 
-<form method='post' action="@if(isset($cliente)){{ url('/cliente/'.$cliente->id.'/update') }}@else{{ url('/cliente/store') }}@endif">
+<form method='post' action="@if(isset($cliente)){{ url('/cliente/'.$cliente->id) }}@else{{ url('/cliente') }}@endif">
+    {{ csrf_field() }}
+    @if(isset($cliente)){{ method_field('patch') }}@endif
     <fieldset>
         
         <!-- Nome -->
@@ -63,8 +65,7 @@
             <label class='control-label' for='habilidades'>Habilidades</label>
             <input id='habilidades' name='habilidades' type='text' placeholder='string' @if(old('habilidades') || isset($cliente)) value='@if(old('habilidades')){{ old('habilidades') }}@else{{$cliente->habilidades}}@endif'@endif class='form-control input-md'>
         </div>
-                    <br>
-        {{ csrf_field() }}
+        <br>
         <div class="clearfix"></div>
         <a href="{{ url( '/cliente' )}}" class="btn btn-lg btn-info">
             <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
@@ -76,12 +77,18 @@
             @if(isset($cliente)) Alterações @endif
         </button>
         @if(isset($cliente))
-            <a href="{{ url('/cliente/'.$cliente->id.'/destroy')}}" class="btn btn-lg btn-danger">
+            <div class="btn btn-lg btn-danger" onclick="if(confirm('confirmar exclusão?')){document.form_deletar.submit()}">
                 <i class="fa fa-trash" aria-hidden="true"></i>
                 Deletar
-            </a>
-        @endif            
+            </div>
+        @endif     
     </fieldset>
 </form>
+@if(isset($cliente))
+    <form action="{{ url('/cliente/'.$cliente->id)}}" method="post" name="form_deletar">
+        {{ csrf_field() }}
+        {{ method_field('delete') }}
+    </form>
+@endif
 @stop
     
