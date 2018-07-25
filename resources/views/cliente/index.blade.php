@@ -4,11 +4,7 @@
 @stop
 
 @section('content')
-@if(Session::has('flash_msg'))
-<div class="alert alert-warning text-center">
-    <p><b>{{Session::get('flash_msg')}}</b></p>
-</div>
-@endif
+@include('messages.msgs')
 <a href="{{ url('/cliente/create') }}" class="btn btn-lg btn-success"><i class="fa fa-plus-circle" aria-hidden="true"></i> Novo cadastro</a>
 @if($clientes->all())
 <br /><br />
