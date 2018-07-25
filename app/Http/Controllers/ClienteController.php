@@ -38,15 +38,15 @@ class ClienteController extends Controller
     {
         $request->validate([
         
-            'nome' => 'required',
-            'telefone' => 'required',
-            'email' => 'required',
-            'senha' => 'required',
-            'idade' => 'required',
-            'nascimento' => 'required',
-            'genero' => 'required',
-            'cor_favorita' => 'required',
-            'habilidades' => 'required',
+            'nome' => '',
+            'telefone' => '',
+            'email' => '',
+            'senha' => '',
+            'idade' => '',
+            'nascimento' => '',
+            'genero' => '',
+            'cor_favorita' => '',
+            'habilidades' => '',
 
         ]);
 
@@ -87,7 +87,7 @@ class ClienteController extends Controller
     public function edit(Cliente $cliente)
     {
         $data["cliente"] = $cliente;
-        return view("cliente.edit", $data);
+        return view("cliente.form", $data);
     }
         
     /**
@@ -101,15 +101,15 @@ class ClienteController extends Controller
     {
         $request->validate([
         
-            'nome' => 'required',
-            'telefone' => 'required',
-            'email' => 'required',
-            'senha' => 'required',
-            'idade' => 'required',
-            'nascimento' => 'required',
-            'genero' => 'required',
-            'cor_favorita' => 'required',
-            'habilidades' => 'required',
+            'nome' => '',
+            'telefone' => '',
+            'email' => '',
+            'senha' => '',
+            'idade' => '',
+            'nascimento' => '',
+            'genero' => '',
+            'cor_favorita' => '',
+            'habilidades' => '',
 
         ]);
 
