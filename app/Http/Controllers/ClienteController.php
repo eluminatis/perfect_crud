@@ -36,22 +36,9 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $this->runValidate($request);
         
-            'nome' => '',
-            'telefone' => '',
-            'email' => '',
-            'senha' => '',
-            'idade' => '',
-            'nascimento' => '',
-            'genero' => '',
-            'cor_favorita' => '',
-            'habilidades' => '',
-
-        ]);
-
         $cliente = new Cliente();
-        
         $cliente->nome = $request->nome;
         $cliente->telefone = $request->telefone;
         $cliente->email = $request->email;
@@ -87,19 +74,7 @@ class ClienteController extends Controller
      */
     public function update(Request $request, Cliente $cliente)
     {
-        $request->validate([
-        
-            'nome' => '',
-            'telefone' => '',
-            'email' => '',
-            'senha' => '',
-            'idade' => '',
-            'nascimento' => '',
-            'genero' => '',
-            'cor_favorita' => '',
-            'habilidades' => '',
-
-        ]);
+        $this->runValidate($request);
 
         $cliente->nome = $request->nome;
         $cliente->telefone = $request->telefone;
@@ -127,5 +102,27 @@ class ClienteController extends Controller
         $cliente->delete();
         \Session::flash("flash_msg_success", "Exclusão realizada com sucesso.");
         return redirect("/cliente");
+    }
+
+    /**
+     * Performs the validations in the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     */
+    private function runValidate(Request $request)
+    {
+        $request->validate([
+        
+            'nome' => 'required|email',
+            'telefone' => '',
+            'email' => '',
+            'senha' => '',
+            'idade' => '',
+            'nascimento' => '',
+            'genero' => '',
+            'cor_favorita' => '',
+            'habilidades' => '',
+
+        ]);
     }
 }
