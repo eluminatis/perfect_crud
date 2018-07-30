@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use Illuminate\Http\Request;
+use App\Http\Requests\ClienteRequest;
 
 class ClienteController extends Controller
 {
@@ -34,7 +35,7 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClienteRequest $request)
     {
         $this->runValidate($request);
         
@@ -72,10 +73,8 @@ class ClienteController extends Controller
      * @param  \App\Models\Cliente $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(ClienteRequest $request, Cliente $cliente)
     {
-        $this->runValidate($request);
-
         $cliente->nome = $request->nome;
         $cliente->telefone = $request->telefone;
         $cliente->email = $request->email;
@@ -104,25 +103,4 @@ class ClienteController extends Controller
         return redirect("/cliente");
     }
 
-    /**
-     * Performs the validations in the request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     */
-    private function runValidate(Request $request)
-    {
-        $request->validate([
-        
-            'nome' => 'required|email',
-            'telefone' => '',
-            'email' => '',
-            'senha' => '',
-            'idade' => '',
-            'nascimento' => '',
-            'genero' => '',
-            'cor_favorita' => '',
-            'habilidades' => '',
-
-        ]);
-    }
 }
