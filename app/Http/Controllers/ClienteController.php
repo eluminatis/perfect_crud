@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
-use Illuminate\Http\Request;
 use App\Http\Requests\ClienteRequest;
 
 class ClienteController extends Controller
@@ -37,8 +36,6 @@ class ClienteController extends Controller
      */
     public function store(ClienteRequest $request)
     {
-        $this->runValidate($request);
-        
         $cliente = new Cliente();
         $cliente->nome = $request->nome;
         $cliente->telefone = $request->telefone;

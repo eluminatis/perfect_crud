@@ -25,7 +25,7 @@ class ClienteRequest extends FormRequest
     {
         return [
 
-            'nome' => 'required|email',
+            'nome' => 'required',
             'telefone' => '',
             'email' => '',
             'senha' => '',
@@ -36,5 +36,6 @@ class ClienteRequest extends FormRequest
             'habilidades' => '',
 
         ];
+        
     }
 }
